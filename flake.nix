@@ -10,11 +10,37 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs }:
   let
     configuration = { pkgs, ... }: {
+      # Allow unfree packages.
+      nixpkgs.config.allowUnfree = true;
+
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
-      environment.systemPackages =
-        [ pkgs.vim
-        ];
+      environment.systemPackages = with pkgs; [
+        awscli2
+        bat
+        fzf
+        git
+        google-chrome
+        ipfetch
+        jq
+        jqp
+        kubectl
+        lazycli
+        lazydocker
+        lazygit
+        lazyjournal
+        lazysql
+        lazyssh
+        mc
+        neofetch
+        nixfmt
+        slack
+        tree
+        unzip
+        vim
+        warp-terminal
+        wget
+      ];
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
