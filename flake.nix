@@ -5,9 +5,11 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
   let
     configuration = { pkgs, ... }: {
       # Allow unfree packages.
@@ -72,6 +74,7 @@
       };
 
       system.primaryUser = "severyn-matsiak";
+      users.users.severyn-matsiak.home = "/Users/severyn-matsiak";
 
       # Prevent VM from going to sleep.
       power.sleep = {
@@ -106,7 +109,14 @@
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#work
     darwinConfigurations."work" = nix-darwin.lib.darwinSystem {
-      modules = [ configuration ];
+      modules = [
+        configuration
+        home-manager.darwinModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.severyn-matsiak = ./home.nix;
+        }
+      ];
     };
   };
 }
