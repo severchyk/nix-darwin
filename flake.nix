@@ -20,6 +20,7 @@
       environment.systemPackages = with pkgs; [
         awscli2
         bat
+        coreutils-prefixed
         fzf
         git
         google-chrome
@@ -91,8 +92,32 @@
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 
-      # Enable alternative shell support in nix-darwin.
-      # programs.fish.enable = true;
+      # Enable shell aliases.
+      environment.shellAliases = {
+        # Add colors for filetype and human-readable sizes by default on 'ls':
+        ls = "gls -h --color=auto"; # Use GNU Coreutils ls version.
+        lx = "ls -lXB";  # Sort by extension.
+        lk = "ls -lSr";  # Sort by size, biggest last.
+        lt = "ls -ltr";  # Sort by date, most recent last.
+        lc = "ls -ltcr"; # Sort by/show change time, most recent last.
+        lu = "ls -ltur"; # Sort by/show access time, most recent last.
+
+        # The ubiquitous 'll': directories first, with alphanumeric sorting:
+        ll = "ls -alv --group-directories-first";
+        lm = "ll | more";    #  Pipe through 'more'
+        lr = "ll -R";        #  Recursive ls.
+        la = "ll -A";        #  Show hidden files.
+        tree = "tree -Csuh"; #  Nice alternative to 'recursive ls' ...
+
+        df = "df -h";
+        free = "free -h";
+
+        grep = "grep --color=auto";
+        fgrep = "fgrep --color=auto";
+        egrep = "egrep --color=auto";
+
+        ".." = "cd ..";
+      };
 
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
