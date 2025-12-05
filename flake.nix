@@ -42,6 +42,49 @@
         wget
       ];
 
+      # Set system settings.
+      system.defaults = {
+        dock = {
+          orientation = "left";
+          persistent-apps = [
+            "/System/Applications/Apps.app"
+            "/System/Applications/Calendar.app"
+            "${pkgs.google-chrome}/Applications/Google Chrome.app"
+            "${pkgs.slack}/Applications/Slack.app"
+            "/System/Applications/Utilities/Terminal.app"
+            "${pkgs.warp-terminal}/Applications/Warp.app"
+          ];
+          show-recents = false;
+        };
+
+        finder = {
+          _FXSortFoldersFirst = true;
+          AppleShowAllExtensions = true;
+          AppleShowAllFiles = true;
+          FXPreferredViewStyle = "clmv";
+          ShowStatusBar = true;
+        };
+
+        loginwindow.autoLoginUser = "Severyn Matsiak";
+        loginwindow.GuestEnabled = false;
+
+        NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = true;
+      };
+
+      system.primaryUser = "severyn-matsiak";
+
+      # Prevent VM from going to sleep.
+      power.sleep = {
+        display = "never";
+        harddisk = "never";
+      };
+
+      # Set VM hostname.
+      networking = {
+        computerName = "UTM Virtual Machine";
+        hostName = "work";
+      };
+
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 
