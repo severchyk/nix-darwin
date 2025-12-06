@@ -121,18 +121,17 @@
       cursor-style = "block";
       focus-follows-mouse = true;
       font-family = "Roboto Mono";
-      font-size = 10;
+      font-size = 14;
       #initial-command = "neofetch";
       mouse-scroll-multiplier = 6;
       shell-integration = "detect";
       shell-integration-features = "no-cursor";
       term = "xterm-256color";
-      #theme = "Apple System Colors";
+      theme = "Apple System Colors";
       #theme = "Espresso";
       #theme = "elementary-os";
       window-decoration = "auto";
       window-padding-x = 6;
-      # this is currently only supported on macOS :(
       window-save-state = "always";
     };
 

@@ -45,6 +45,11 @@
         wget
       ];
 
+      # Install fonts.
+      fonts.packages = with pkgs; [
+        roboto-mono
+      ];
+
       # Set system settings.
       system.defaults = {
         dock = {
