@@ -49,7 +49,15 @@
 
       # Set system settings.
       system.defaults = {
+        CustomUserPreferences = {
+          # Disable screensaver.
+          "com.apple.screensaver" = {
+            idleTime = 0;
+          };
+        };
+
         dock = {
+          autohide = true;
           orientation = "left";
           persistent-apps = [
             "/System/Applications/Apps.app"
