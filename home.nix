@@ -5,6 +5,13 @@
     homeDirectory = "/Users/severyn-matsiak";
     username = "severyn-matsiak";
     stateVersion = "26.05";
+
+    packages = with pkgs; [
+      chatgpt
+      google-chrome
+      slack
+      warp-terminal
+    ];
   };
 
   # Configure ~/.bashrc

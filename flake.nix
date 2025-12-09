@@ -23,7 +23,6 @@
         coreutils-prefixed
         fzf
         git
-        google-chrome
         ipfetch
         jq
         jqp
@@ -37,11 +36,9 @@
         mc
         neofetch
         nixfmt
-        slack
         tree
         unzip
         vim
-        warp-terminal
         wget
       ];
 
@@ -56,7 +53,7 @@
           orientation = "left";
           persistent-apps = [
             "/System/Applications/Apps.app"
-            "/System/Applications/Calendar.app"
+            "${pkgs.chatgpt}/Applications/ChatGPT.app"
             "${pkgs.google-chrome}/Applications/Google Chrome.app"
             "${pkgs.slack}/Applications/Slack.app"
             "${pkgs.ghostty-bin}/Applications/Ghostty.app"
