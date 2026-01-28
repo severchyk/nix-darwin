@@ -5,15 +5,20 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
+  outputs = inputs@{ self, nixpkgs, nix-darwin, nix-vscode-extensions, home-manager }:
   let
     configuration = { pkgs, ... }: {
       # Allow unfree packages.
       nixpkgs.config.allowUnfree = true;
+
+      nixpkgs.overlays = [
+        nix-vscode-extensions.overlays.default
+      ];
 
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
@@ -27,6 +32,7 @@
         jq
         jqp
         kubectl
+        kubernetes-helm
         lazycli
         lazydocker
         lazygit
@@ -36,6 +42,7 @@
         mc
         neofetch
         nixfmt
+        postgresql
         tree
         unzip
         vim
