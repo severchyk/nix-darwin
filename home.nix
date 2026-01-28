@@ -54,6 +54,8 @@
       fgrep = "fgrep --color=auto";
       egrep = "egrep --color=auto";
 
+      df = "gdf -h";
+
       ".." = "cd ..";
     };
 
@@ -96,6 +98,8 @@
       grep = "grep --color=auto";
       fgrep = "fgrep --color=auto";
       egrep = "egrep --color=auto";
+
+      df = "gdf -h";
 
       ".." = "cd ..";
     };
