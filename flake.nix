@@ -64,7 +64,7 @@
         };
 
         dock = {
-          autohide = true;
+          autohide = false;
           orientation = "left";
           persistent-apps = [
             "/System/Applications/Apps.app"
