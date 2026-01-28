@@ -40,6 +40,7 @@
         lazysql
         lazyssh
         mc
+        ncdu
         neofetch
         nixfmt
         postgresql
