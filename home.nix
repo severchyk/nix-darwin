@@ -203,6 +203,7 @@
         ms-vscode.remote-explorer
         ms-vscode-remote.remote-ssh
         ms-vscode-remote.remote-ssh-edit
+        openai.chatgpt
         redhat.vscode-yaml
       ];
 
@@ -234,6 +235,7 @@
         ms-vscode.remote-explorer
         ms-vscode-remote.remote-ssh
         ms-vscode-remote.remote-ssh-edit
+        openai.chatgpt
         redhat.vscode-yaml
       ];
 
@@ -270,6 +272,7 @@
         ms-vscode.remote-explorer
         ms-vscode-remote.remote-ssh
         ms-vscode-remote.remote-ssh-edit
+        openai.chatgpt
         redhat.vscode-yaml
       ];
 
@@ -298,6 +301,7 @@
         ms-vscode.remote-explorer
         ms-vscode-remote.remote-ssh
         ms-vscode-remote.remote-ssh-edit
+        openai.chatgpt
         redhat.vscode-yaml
       ];
 
@@ -322,6 +326,7 @@
         ms-vscode.remote-explorer
         ms-vscode-remote.remote-ssh
         ms-vscode-remote.remote-ssh-edit
+        openai.chatgpt
         redhat.vscode-yaml
         ustymukhman.matrix-theme
       ];
@@ -348,6 +353,7 @@
         ms-vscode.remote-explorer
         ms-vscode-remote.remote-ssh
         ms-vscode-remote.remote-ssh-edit
+        openai.chatgpt
         redhat.vscode-yaml
       ];
 
@@ -374,6 +380,7 @@
         ms-vscode.remote-explorer
         ms-vscode-remote.remote-ssh
         ms-vscode-remote.remote-ssh-edit
+        openai.chatgpt
         redhat.vscode-yaml
         robbowen.synthwave-vscode
       ];
@@ -400,6 +407,7 @@
         ms-vscode.remote-explorer
         ms-vscode-remote.remote-ssh
         ms-vscode-remote.remote-ssh-edit
+        openai.chatgpt
         redhat.vscode-yaml
       ];
 
