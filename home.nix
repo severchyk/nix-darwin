@@ -427,32 +427,5 @@
         "workbench.preferredLightColorTheme" = "Tokyo Night Light";
       };
     };
-
-    profiles.White = {
-      extensions = with pkgs.vscode-marketplace; [
-        arthurwhite.white
-        jnoortheen.nix-ide
-        mechatroner.rainbow-csv
-        ms-vscode.remote-explorer
-        ms-vscode-remote.remote-ssh
-        ms-vscode-remote.remote-ssh-edit
-        redhat.vscode-yaml
-      ];
-
-      userSettings = {
-        "editor.fontFamily" = "Roboto Mono";
-        "editor.fontSize" = 14;
-        "explorer.confirmDelete" = false;
-        "extensions.ignoreRecommendations" = true;
-        "files.autoSave" = "onFocusChange";
-        "files.trimFinalNewlines" = true;
-        "files.trimTrailingWhitespace" = true;
-        "redhat.telemetry.enabled" = false;
-        "terminal.integrated.fontSize" = 14;
-        "window.autoDetectColorScheme" = true;
-        "workbench.preferredDarkColorTheme" = "White Night";
-        "workbench.preferredLightColorTheme" = "White";
-      };
-    };
   };
 }
