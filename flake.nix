@@ -23,16 +23,17 @@
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages = with pkgs; [
+        ansible
         awscli2
         bat
         coreutils-prefixed
+        eksctl
         fzf
-        git
         ipfetch
         jq
         jqp
+        k9s
         kubectl
-        kubernetes-helm
         lazycli
         lazydocker
         lazygit
@@ -40,10 +41,11 @@
         lazysql
         lazyssh
         mc
+        micro
         ncdu
-        neofetch
         nixfmt
         postgresql
+        terraform
         tree
         unzip
         vim
@@ -57,25 +59,19 @@
 
       # Set system settings.
       system.defaults = {
-        CustomUserPreferences = {
-          # Disable screensaver.
-          "com.apple.screensaver" = {
-            idleTime = 0;
-          };
-        };
-
         dock = {
           autohide = false;
           orientation = "left";
           persistent-apps = [
             "/System/Applications/Apps.app"
             "${pkgs.chatgpt}/Applications/ChatGPT.app"
-            "${pkgs.google-chrome}/Applications/Google Chrome.app"
             "${pkgs.slack}/Applications/Slack.app"
             "${pkgs.ghostty-bin}/Applications/Ghostty.app"
             "/System/Applications/Utilities/Terminal.app"
             "${pkgs.warp-terminal}/Applications/Warp.app"
+            "${pkgs.antigravity}/Applications/Antigravity.app"
             "${pkgs.vscode}/Applications/Visual Studio Code.app"
+            "${pkgs.zed-editor}/Applications/Zed.app"
           ];
           show-recents = false;
         };
@@ -87,26 +83,6 @@
           FXPreferredViewStyle = "clmv";
           ShowStatusBar = true;
         };
-
-        loginwindow.autoLoginUser = "Severyn Matsiak";
-        loginwindow.GuestEnabled = false;
-
-        NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = true;
-      };
-
-      system.primaryUser = "severyn-matsiak";
-      users.users.severyn-matsiak.home = "/Users/severyn-matsiak";
-
-      # Prevent VM from going to sleep.
-      power.sleep = {
-        display = "never";
-        harddisk = "never";
-      };
-
-      # Set VM hostname.
-      networking = {
-        computerName = "UTM Virtual Machine";
-        hostName = "work";
       };
 
       # Necessary for using flakes on this system.
@@ -124,15 +100,72 @@
     };
   in
   {
-    # Build darwin flake using:
+    # Build darwin flake for VM using:
+    # $ darwin-rebuild build --flake .#vm
+    darwinConfigurations."vm" = nix-darwin.lib.darwinSystem {
+      modules = [
+        configuration
+        {
+          system.defaults = {
+            CustomUserPreferences = {
+              # Disable screensaver.
+              "com.apple.screensaver" = {
+                idleTime = 0;
+              };
+            };
+
+            loginwindow.GuestEnabled = false;
+          };
+
+          system.primaryUser = "severyn-matsiak";
+          users.users.severyn-matsiak.home = "/Users/severyn-matsiak";
+
+          # Prevent VM from going to sleep.
+          power.sleep = {
+            display = "never";
+            harddisk = "never";
+          };
+
+          # Set VM hostname.
+          networking = {
+            computerName = "UTM Virtual Machine";
+            hostName = "work";
+          };
+
+          system.defaults.dock.persistent-apps = [
+            "/System/Applications/Utilities/Screenshot.app"
+            "${pkgs.google-chrome}/Applications/Google Chrome.app"
+          ];
+        }
+        home-manager.darwinModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.severyn-matsiak = { pkgs, ... }: {
+            imports = [ ./home.nix ];
+            home.packages = [ pkgs.google-chrome ];
+          };
+        }
+      ];
+    };
+
+    # Build darwin flake for work using:
     # $ darwin-rebuild build --flake .#work
     darwinConfigurations."work" = nix-darwin.lib.darwinSystem {
       modules = [
         configuration
+        {
+          system.primaryUser = "work";
+          users.users.work.home = "/Users/work";
+
+          # Add preinstalled Google Chrome to dock for work user.
+          system.defaults.dock.persistent-apps = [
+            "/Applications/Google Chrome.app"
+          ];
+        }
         home-manager.darwinModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.severyn-matsiak = ./home.nix;
+          home-manager.users.work = ./home.nix;
         }
       ];
     };
