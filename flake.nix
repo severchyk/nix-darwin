@@ -65,6 +65,7 @@
           persistent-apps = [
             "/System/Applications/Apps.app"
             "${pkgs.chatgpt}/Applications/ChatGPT.app"
+            "${pkgs.google-chrome}/Applications/Google Chrome.app"
             "${pkgs.slack}/Applications/Slack.app"
             "${pkgs.ghostty-bin}/Applications/Ghostty.app"
             "/System/Applications/Utilities/Terminal.app"
@@ -84,6 +85,9 @@
           ShowStatusBar = true;
         };
       };
+
+      system.primaryUser = "severyn-matsiak";
+      users.users.severyn-matsiak.home = "/Users/severyn-matsiak";
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
@@ -117,9 +121,6 @@
             loginwindow.GuestEnabled = false;
           };
 
-          system.primaryUser = "severyn-matsiak";
-          users.users.severyn-matsiak.home = "/Users/severyn-matsiak";
-
           # Prevent VM from going to sleep.
           power.sleep = {
             display = "never";
@@ -131,19 +132,11 @@
             computerName = "UTM Virtual Machine";
             hostName = "work";
           };
-
-          system.defaults.dock.persistent-apps = [
-            "/System/Applications/Utilities/Screenshot.app"
-            "${pkgs.google-chrome}/Applications/Google Chrome.app"
-          ];
         }
         home-manager.darwinModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.severyn-matsiak = { pkgs, ... }: {
-            imports = [ ./home.nix ];
-            home.packages = [ pkgs.google-chrome ];
-          };
+          home-manager.users.severyn-matsiak = ./home.nix;
         }
       ];
     };
@@ -153,19 +146,10 @@
     darwinConfigurations."work" = nix-darwin.lib.darwinSystem {
       modules = [
         configuration
-        {
-          system.primaryUser = "work";
-          users.users.work.home = "/Users/work";
-
-          # Add preinstalled Google Chrome to dock for work user.
-          system.defaults.dock.persistent-apps = [
-            "/Applications/Google Chrome.app"
-          ];
-        }
         home-manager.darwinModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.work = ./home.nix;
+          home-manager.users.severyn-matsiak = ./home.nix;
         }
       ];
     };
