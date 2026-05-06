@@ -6,6 +6,7 @@
     ./programs/claude-code.nix
     ./programs/ghostty.nix
     ./programs/git.nix
+    ./programs/mc.nix
     ./programs/micro.nix
     ./programs/vscode.nix
     ./programs/waveterm.nix

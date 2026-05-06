@@ -40,7 +40,6 @@
         lazyjournal
         lazysql
         lazyssh
-        mc
         micro
         ncdu
         nixfmt
