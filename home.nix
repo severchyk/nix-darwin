@@ -3,6 +3,7 @@
 {
   imports = [
     ./programs/bash.nix
+    ./programs/claude-code.nix
     ./programs/ghostty.nix
     ./programs/git.nix
     ./programs/micro.nix
@@ -18,7 +19,6 @@
     packages = with pkgs; [
       antigravity
       chatgpt
-      claude-code
       google-chrome
       slack
       warp-terminal
