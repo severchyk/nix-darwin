@@ -23,32 +23,15 @@
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages = with pkgs; [
-        ansible
-        awscli2
         bat
-        coreutils-prefixed
-        eksctl
-        fzf
+        fastfetch
         ipfetch
-        jq
-        jqp
-        k9s
-        kubectl
-        lazycli
-        lazydocker
-        lazygit
-        lazyjournal
-        lazysql
-        lazyssh
         micro
         ncdu
         nixfmt
-        postgresql
-        terraform
         tree
         unzip
         vim
-        wget
       ];
 
       # Install fonts.

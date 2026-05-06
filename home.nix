@@ -23,6 +23,25 @@
       google-chrome
       slack
       warp-terminal
+
+      ansible
+      awscli2
+      coreutils-prefixed
+      eksctl
+      fzf
+      jq
+      jqp
+      k9s
+      kubectl
+      lazycli
+      lazydocker
+      lazygit
+      lazyjournal
+      lazysql
+      lazyssh
+      postgresql
+      terraform
+      wget
     ];
   };
 }
