@@ -16,6 +16,7 @@
       focus-follows-mouse = true;
       font-family = "Roboto Mono";
       font-size = 14;
+      font-style = "Regular";
       mouse-scroll-multiplier = 4;
       shell-integration = "detect";
       shell-integration-features = "no-cursor";
