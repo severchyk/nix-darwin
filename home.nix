@@ -5,6 +5,7 @@
     ./programs/bash.nix
     ./programs/ghostty.nix
     ./programs/git.nix
+    ./programs/micro.nix
     ./programs/vscode.nix
     ./programs/waveterm.nix
     ./programs/zed.nix
