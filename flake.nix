@@ -50,7 +50,6 @@
             "${pkgs.google-chrome}/Applications/Google Chrome.app"
             "${pkgs.slack}/Applications/Slack.app"
             "${pkgs.ghostty-bin}/Applications/Ghostty.app"
-            "/System/Applications/Utilities/Terminal.app"
             # "${pkgs.warp-terminal}/Applications/Warp.app"
             "${pkgs.antigravity}/Applications/Antigravity.app"
             "${pkgs.vscode}/Applications/Visual Studio Code.app"
