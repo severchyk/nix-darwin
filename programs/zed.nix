@@ -30,6 +30,26 @@
       # show_whitespaces = "all";
       ui_font_size = 16;
       buffer_font_size = 14;
+
+      project_panel = {
+        dock = "left";
+      };
+
+      git_panel = {
+        dock = "left";
+      };
+
+      debugger = {
+        button = false;
+      };
+
+      collaboration_panel = {
+        button = false;
+      };
+
+      agent = {
+        dock = "right";
+      };
     };
   };
 }
