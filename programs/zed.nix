@@ -13,13 +13,6 @@
       "nix"
       "rainbow-csv"
       "terraform"
-
-      "catppuccin"
-      "catppuccin-blur"
-      "catppuccin-icons"
-      "github-theme"
-      "macos-classic"
-      "tokyo-night"
     ];
 
     # Everything inside of these brackets are Zed options
@@ -37,12 +30,6 @@
       # show_whitespaces = "all";
       ui_font_size = 16;
       buffer_font_size = 14;
-
-      theme = {
-        mode = "system";
-        light = "One Light";
-        dark = "One Dark";
-      };
     };
   };
 }
