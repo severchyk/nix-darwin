@@ -10,6 +10,7 @@
     package = pkgs.ghostty-bin;
 
     settings = {
+      auto-update = "off";
       background-opacity = 0.9;
       background-blur = true;
       cursor-style = "block";
