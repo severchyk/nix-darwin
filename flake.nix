@@ -13,6 +13,10 @@
   outputs = inputs@{ self, nixpkgs, nix-darwin, nix-vscode-extensions, home-manager }:
   let
     configuration = { pkgs, ... }: {
+      # We use the NixOS nix-installer which manages Nix for us,
+      # so we don't want nix-darwin to do it.
+      nix.enable = false;
+
       # Allow unfree packages.
       nixpkgs.config.allowUnfree = true;
 
