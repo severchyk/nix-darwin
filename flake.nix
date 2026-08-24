@@ -55,7 +55,7 @@
             "${pkgs.slack}/Applications/Slack.app"
             "${pkgs.ghostty-bin}/Applications/Ghostty.app"
             # "${pkgs.warp-terminal}/Applications/Warp.app"
-            "${pkgs.antigravity}/Applications/Antigravity.app"
+            "${pkgs.antigravity-ide}/Applications/Antigravity IDE.app"
             "${pkgs.vscode}/Applications/Visual Studio Code.app"
             "${pkgs.zed-editor}/Applications/Zed.app"
           ];

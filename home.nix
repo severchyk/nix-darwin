@@ -18,7 +18,7 @@
     stateVersion = "26.05";
 
     packages = with pkgs; [
-      antigravity
+      antigravity-ide
       chatgpt
       google-chrome
       slack
