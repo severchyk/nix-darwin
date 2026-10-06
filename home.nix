@@ -23,7 +23,7 @@
       chatgpt
       google-chrome
       slack
-      # warp-terminal
+      warp-terminal
 
       ansible
       awscli2
