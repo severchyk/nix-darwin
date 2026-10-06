@@ -8,6 +8,7 @@
     ./programs/git.nix
     ./programs/mc.nix
     ./programs/micro.nix
+    ./programs/superfile.nix
     ./programs/vscode.nix
     ./programs/waveterm.nix
     ./programs/zed.nix
