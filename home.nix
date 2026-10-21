@@ -30,6 +30,8 @@
       coreutils-prefixed
       eksctl
       fzf
+      gh
+      glab
       jq
       jqp
       k9s
